@@ -252,7 +252,7 @@ export function asyncMap(
 }
 
 function isErrorObj(
-  obj: ValidateError | string | (() => string),
+  obj: ValidateError | string | (() => string) | ((f) => string),
 ): obj is ValidateError {
   return !!(obj && (obj as ValidateError).message !== undefined);
 }
@@ -269,7 +269,9 @@ function getValue(value: Values, path: string[]) {
 }
 
 export function complementError(rule: InternalRuleItem, source: Values) {
-  return (oe: ValidateError | (() => string) | string): ValidateError => {
+  return (
+    oe: ValidateError | ((f) => string) | (() => string) | string,
+  ): ValidateError => {
     let fieldValue;
     if (rule.fullFields) {
       fieldValue = getValue(source, rule.fullFields);
@@ -281,10 +283,11 @@ export function complementError(rule: InternalRuleItem, source: Values) {
       oe.fieldValue = fieldValue;
       return oe;
     }
+    const field = ((oe as unknown) as ValidateError).field || rule.fullField;
     return {
-      message: typeof oe === 'function' ? oe() : oe,
+      message: typeof oe === 'function' ? oe(field) : oe,
       fieldValue,
-      field: ((oe as unknown) as ValidateError).field || rule.fullField,
+      field,
     };
   };
 }

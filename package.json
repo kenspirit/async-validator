@@ -1,6 +1,6 @@
 {
-  "name": "async-validator",
-  "version": "4.2.5",
+  "name": "async-validator-successor",
+  "version": "4.2.6",
   "description": "validate form asynchronous",
   "typings": "typings/index.d.ts",
   "keywords": [
@@ -8,11 +8,11 @@
     "validate",
     "async"
   ],
-  "homepage": "https://github.com/yiminghe/async-validator",
-  "author": "yiminghe@gmail.com",
+  "homepage": "https://github.com/kenspirit/async-validator",
+  "author": "chengusky@gmail.com",
   "repository": {
     "type": "git",
-    "url": "git@github.com:yiminghe/async-validator.git"
+    "url": "git@github.com:kenspirit/async-validator.git"
   },
   "@pika/pack": {
     "pipeline": [
@@ -45,7 +45,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/yiminghe/async-validator/issues"
+    "url": "https://github.com/kenspirit/async-validator/issues"
   },
   "license": "MIT",
   "config": {

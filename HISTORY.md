@@ -1,6 +1,10 @@
 # History
 ----
 
+## 4.2.7 / 2023-11-08
+
+- Pass field info to rule message function
+
 ## 4.0.0 / 2021-08-11
 
 - full ts support
